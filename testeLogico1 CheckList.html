@@ -1,189 +1,101 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste Lógico JOARAUJOTEC</title>
+    <title>Flight Checklist</title>
     <style>
-        body{
-            
-            text-align: center;
-            color: rgb(255, 255, 255);
-            background: linear-gradient(to right, rgb(2, 136, 287), rgb(109, 3, 3));
-            background-image: url("https://user-images.githubusercontent.com/26748614/96337412-581f2e80-1087-11eb-90f3-f033a8a1b41e.jpg");
-            
-        }
-        .img{
-            width: 100%;
-            padding-top: 0%;
-        }
-        .container{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 3em;
-            border-radius: 10px 0px 10px 0px;
-            
-        }
-        button{
-            background-color: rgb(88, 0, 0);
-            color: rgb(238, 238, 238);
-            border: none;
-            padding: 1em;
-            border-radius: 10px 0px 10px 0px;
-            box-shadow: 1px 1px 5px rgb(255, 255, 255);
-            cursor: pointer;
-        }
-        button:hover{
-            background-color: rgb(0, 0, 0);
+        #principal {
+            background: goldenrod;
+            border: rgb(153, 153, 209);
+
 
         }
-        .segundo-passo,
-        .terceiro-passo{
-            display: none;
+
+        h2 {
+            color: rgb(255, 255, 255);
+            background-color: rgb(95, 10, 121);
+            text-align: center;
+            text-decoration: double;
+            border: 2px;
+            border-radius: 8px;
+            font-size: 40px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
-        
-        input{
-            padding: 10px;
-            border-radius: 5;
-            border: none;
-            
-        }
-        #resultado{
-            font-size: 20px;
-        }
-        
     </style>
 </head>
+
 <body>
-  
-    <div class="container">
+    <div id="principal">
+        <h2>Teste Lógico de requisitos </h2>
+        <p>Faça um algoritmo para ler o nome, idade, altura e peso de todos os 6 tripulantes da nave SpaceStylex. Ao
+            final o programa deverá retornar o peso total dos tripulantes, o nome dos dois mais altos para ocuparem os
+            primeiros assentos, a idade média da tripulação e o nome do ocupante com menor peso para ocupar o último
+            assento.
 
-        <div class="primeiro-passo">
-            <H2>Développeur @JOARAUJOTEC</h2> 
-                <h4>Teste lògico</h4>
-                <h2>Antes do lançamento, a aeronave deve estar em perfeito estado para completar a missão.
-                    para isso são necessários procedimentos como Checklist.
-                </h2>
-            <h2>O programa deve escrever na tela todos os itens e ler a entrada do usuário, sendo obrigatória
-                    a entrada Sim para mostrar" Checklist realizado com sucesso". Caso o usuário digite Não para um dos itens
-                    o programa deverá retornar a mensagem de falha no Checklist.
-            </h2>
-            <button onclick="go(1,2)">Começar Teste</button> 
-        </div>
+        </p>
+        <script>
+       let nomes = new Array();
+       let pesos = new Array();
+       let idades = new Array();
+       let alturas = new Array();
+       let somaPesos = 0, mediaIdades = 0, somaIdades= 0;
 
-        <div class="segundo-passo">
-            <h3>Coleta de dados</h3>
-            <hr>
-            <label for="bateria">Informe o estado da bateria (s=1 / n=2)</label><br>
-            <input type="number" placeholder="bateria ok? 1 ou 2?" id="bateria">
-            <br>
-            <label for="permissao">Informe o estado das permissões (s=1 / n=2)</label><br>
-            <input type="number" placeholder="permissao ok? 1 ou 2?" id="permissao">
-            <br>
-            <label for="combustivel">Informe o estado do combustível(s=1 / n=2)</label><br>
-            <input type="number" placeholder="combustível 1 ou 2?" id="combustivel">
-            <br>
-            <label for="audio">Informe o estado do áudio (s=1 / n=2)</label><br>
-            <input type="number" placeholder="áudio ok? 1 ou 2??" id="audio">
-                <br><br>
-      
-        <button onclick="verificar()">Verificar</button>
-        </div>
-
-        <div class="terceiro-passo">
-            <h3>Resultado da verificação</h3>
-            <p id="resultado"></p>
-            <button onclick="go(3,2)">Refazer verificação</button>
-            <button onclick="go(3,1)">Encerrar</button>
-        </div>
-
-    </div>
-    
-</body>
-
-<script>
-    const primeiraDiv = document.querySelector('.primeiro-passo');
-    const segundaDiv = document.querySelector('.segundo-passo');
-    const terceiraDiv = document.querySelector('.terceiro-passo');
-
-    function go(currentStep,nextStep) //fonction chargée de basculer entre les DIV
-   //elle appliquera l’affichage NONE sur une DIV et appliquera l’affichage BLOCK sur une autre DIV
-    {
-        let dNone, dBlock;
-        if(currentStep == 1)
-        {
-            dNone = primeiraDiv;
+        for (let index = 0; index < 3; index++) {
+        nomes[index] = prompt("Informe o nome do " + (index +1) + "º tripulante: ");
+        pesos[index] = parseInt(prompt("Informe o peso do "+ (index + 1) + "º tripulante: "));
+        idades[index] = parseInt(prompt("Informe a idade do "+ (index + 1) + "º tripulante: "));
+        alturas[index] = parseFloat(prompt("Informe a altura do "+ (index + 1) + "º tripulante: "));
+        
+        somaPesos += pesos[index]; 
+        somaIdades += idades[index];
+        mediaIdades = somaIdades/3;
         }
-        else if(currentStep == 2)
-        {
-            dNone = segundaDiv;
+       
+    let menorP = pesos[0];
+    let indiceMenor = 0;
+    for(let index = 0; index < 3; index++){
+        if(pesos[index] < menorP){
+            menorP = pesos[index];
+           indiceMenor = index;
         }
-        else
-        {
-            dNone = terceiraDiv;
-        }
-
-        dNone.style.display = 'none';
-
-        if(nextStep == 1)
-        {
-            dBlock =             dNone = primeiraDiv;
-;
-        }
-        else if(nextStep == 2)
-        {
-            dBlock = segundaDiv;
-        }
-        else
-        {
-            dBlock = terceiraDiv;
-        }
-
-        dBlock.style.display = 'block';
     }
 
-function verificar()
-//Fonctionne pour valider la saisie de données si l’un des champs est vide 
-//Função para validar a entrada de dados se um dos campos estiver vazio 
-{
-    const bateria = document.getElementById('bateria');
-    const permissao = document.getElementById('permissao');
-    const combustivel = document.getElementById('combustivel');
-    const audio = document.getElementById('audio');
+    let maior_altura = alturas[0];
+    let segunda_maior_altura = 0;
 
-    bateria.style.border = 'none';
-    permissao.style.border = 'none';
-    combustivel.style.border = 'none';
-    audio.style.border = 'none';
+    for (let i = 0; i < alturas.length; i++){
+        if (alturas[i] > maior_altura){
+            segunda_maior_altura = maior_altura;
+            maior_altura = alturas[i];
+            
+        }else if(alturas[i] > segunda_maior_altura && alturas[i] < maior_altura){
+            segunda_maior_altura = alturas[i];
+
+        }
+    }
+
+
+      
     
-  
-    if(!bateria.value || !permissao.value || combustivel.value || audio.value)
-    {
-        if (bateria.value == 1
-        && permissao.value == 1
-        && combustivel.value == 1 
-        && audio.value == 1)
-        {
-            console.log('CheckList realizado com sucesso, voo autorizado, boa viagem!');
-            resultado.style.color = 'green';
-            resultado.innerHTML = "CheckList realizado com sucesso, voo autorizado, boa viagem!"
-        }
-        else
-        {
-            console.log('CheckList incompleto, voo cancelado!');
-            resultado.style.color = 'red';
-            resultado.innerHTML = "CheckList incompleto, voo cancelado!"
-        }resultado
-            go(2,3);//Função responsável por mostrar a terceira div quando os valores são informados e clicamos em verificar
-            //fonction responsavel pour montrer la troisième div lorsque les valeurs sont saisies et nous cliquons sur verifier
-        }
-}
+       document.write("Os nomes dos tripulantes São:" + nomes);
+       document.write("<br>O peso total dos tripulantes é: "+ somaPesos);
+       document.write("<br> A média da idade dos tripulantes é: " + mediaIdades);
+       document.write("<br> O menor peso é: "+ menorP +" kg do tripulante " + nomes[indiceMenor]);
+       document.write("<br> A altura do tripulante mais alto é: " + maior_altura);
+       document.write("<br> A altura do segundo tripulante mais alto é: " + segunda_maior_altura);
+    
+       console.log(maior_altura);
+       console.log(segunda_maior_altura);
+        </script>
 
-</script>
+
+
+    </div>
+</body>
+
+</html>
 
 
