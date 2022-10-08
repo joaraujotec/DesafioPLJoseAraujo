@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Lógico 2 verificar/title>
+    <style>
+        #principal {
+            background: goldenrod;
+            border: rgb(153, 153, 209);
+        }
+
+        h2 {
+            color: rgb(255, 255, 255);
+            background-color: rgb(95, 10, 121);
+            text-align: center;
+            text-decoration: double;
+            border: 2px;
+            border-radius: 8px;
+            font-size: 40px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="principal">
+        <h2>Teste Lógico medidor</h2>
+        <p>A empresa quer verificar se um tripulante está qualificado para a viagem ou não. 
+            Para estar em condições, um dos seguintes requisitos deve ser satisfeito:
+            - Ter no mínimo 25 anos de idade.
+            - Ter 5 anos de experiência.
+            - Ter no mínimo 21 anos e ter trabalhado no mínimo 2 anos.
+            Com base nas informações acima, faça um algoritmo que leia: o nome do tripulante, o ano de seu nascimento e
+            o ano de seu ingresso na empresa. O programa deverá escrever a idade, o tempo de trabalho do empregado e a
+            mensagem 'Apto' ou 'Não apto' de acordo com as condições.
+
+        </p>
+
+
+        <script>
+            let anoNascimento = prompt("Informe o ano de nascimento do tripulante :");
+            let anoAtual = prompt("Informe o ano atual:");
+            let entrada = prompt("Informe o ano de entrada no trabalho:");
+            let nome = prompt("Informe o nome do tripulande")
+            let idade = anoAtual - anoNascimento;
+            let tempoServico = anoAtual - entrada;
+
+            if (idade >= 25 && tempoServico >= 5) {
+                document.write(nome + " sua idade "+ idade + " e tempo de serviço de: "+ tempoServico +" anos")
+                document.write("<br> Você está apto para viajar")
+            } else {
+                document.write(nome + " sua idade é: "+ idade + " e tempo de serviço de: "+ tempoServico +" anos")
+                document.write("<br> Infelizmente você não está apto para viajar")
+            }
+        </script>
+
+
+
+    </div>
+</body>
+
+</html>

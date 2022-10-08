@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Checklist</title>
+    <style>
+        #principal {
+            background: goldenrod;
+            border: rgb(153, 153, 209);
+
+
+        }
+
+        h2 {
+            color: rgb(255, 255, 255);
+            background-color: rgb(95, 10, 121);
+            text-align: center;
+            text-decoration: double;
+            border: 2px;
+            border-radius: 8px;
+            font-size: 40px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="principal">
+        <h2>Teste Lógico de requisitos </h2>
+        <p>Faça um algoritmo para ler o nome, idade, altura e peso de todos os 6 tripulantes da nave SpaceStylex. Ao
+            final o programa deverá retornar o peso total dos tripulantes, o nome dos dois mais altos para ocuparem os
+            primeiros assentos, a idade média da tripulação e o nome do ocupante com menor peso para ocupar o último
+            assento.
+
+        </p>
+        <script>
+       let nomes = new Array();
+       let pesos = new Array();
+       let idades = new Array();
+       let alturas = new Array();
+       let somaPesos = 0, mediaIdades = 0, somaIdades= 0;
+
+        for (let index = 0; index < 3; index++) {
+        nomes[index] = prompt("Informe o nome do " + (index +1) + "º tripulante: ");
+        pesos[index] = parseInt(prompt("Informe o peso do "+ (index + 1) + "º tripulante: "));
+        idades[index] = parseInt(prompt("Informe a idade do "+ (index + 1) + "º tripulante: "));
+        alturas[index] = parseFloat(prompt("Informe a altura do "+ (index + 1) + "º tripulante: "));
+        
+        somaPesos += pesos[index]; 
+        somaIdades += idades[index];
+        mediaIdades = somaIdades/3;
+        }
+       
+    let menorP = pesos[0];
+    let indiceMenor = 0;
+    for(let index = 0; index < 3; index++){
+        if(pesos[index] < menorP){
+            menorP = pesos[index];
+           indiceMenor = index;
+        }
+    }
+
+    let maior_altura = alturas[0];
+    let segunda_maior_altura = 0;
+
+    for (let i = 0; i < alturas.length; i++){
+        if (alturas[i] > maior_altura){
+            segunda_maior_altura = maior_altura;
+            maior_altura = alturas[i];
+            
+        }else if(alturas[i] > segunda_maior_altura && alturas[i] < maior_altura){
+            segunda_maior_altura = alturas[i];
+
+        }
+    }
+
+
+      
+    
+       document.write("Os nomes dos tripulantes São:" + nomes);
+       document.write("<br>O peso total dos tripulantes é: "+ somaPesos);
+       document.write("<br> A média da idade dos tripulantes é: " + mediaIdades);
+       document.write("<br> O menor peso é: "+ menorP +" kg do tripulante " + nomes[indiceMenor]);
+       document.write("<br> A altura do tripulante mais alto é: " + maior_altura);
+       document.write("<br> A altura do segundo tripulante mais alto é: " + segunda_maior_altura);
+    
+       console.log(maior_altura);
+       console.log(segunda_maior_altura);
+        </script>
+
+
+
+    </div>
+</body>
+
+</html>

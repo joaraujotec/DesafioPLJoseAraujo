@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Lógico JOARAUJOTEC</title>
+    <style>
+        body{
+            
+            text-align: center;
+            color: rgb(255, 255, 255);
+            background: linear-gradient(to right, rgb(2, 136, 287), rgb(109, 3, 3));
+            background-image: url("https://user-images.githubusercontent.com/26748614/96337412-581f2e80-1087-11eb-90f3-f033a8a1b41e.jpg");
+            
+        }
+        .img{
+            width: 100%;
+            padding-top: 0%;
+        }
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 3em;
+            border-radius: 10px 0px 10px 0px;
+            
+        }
+        button{
+            background-color: rgb(88, 0, 0);
+            color: rgb(238, 238, 238);
+            border: none;
+            padding: 1em;
+            border-radius: 10px 0px 10px 0px;
+            box-shadow: 1px 1px 5px rgb(255, 255, 255);
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgb(0, 0, 0);
+
+        }
+        .segundo-passo,
+        .terceiro-passo{
+            display: none;
+        }
+        
+        input{
+            padding: 10px;
+            border-radius: 5;
+            border: none;
+            
+        }
+        #resultado{
+            font-size: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+  
+    <div class="container">
+
+        <div class="primeiro-passo">
+            <H2>Développeur @JOARAUJOTEC</h2> 
+                <h4>Teste lògico</h4>
+                <h2>Antes do lançamento, a aeronave deve estar em perfeito estado para completar a missão.
+                    para isso são necessários procedimentos como Checklist.
+                </h2>
+            <h2>O programa deve escrever na tela todos os itens e ler a entrada do usuário, sendo obrigatória
+                    a entrada Sim para mostrar" Checklist realizado com sucesso". Caso o usuário digite Não para um dos itens
+                    o programa deverá retornar a mensagem de falha no Checklist.
+            </h2>
+            <button onclick="go(1,2)">Começar Teste</button> 
+        </div>
+
+        <div class="segundo-passo">
+            <h3>Coleta de dados</h3>
+            <hr>
+            <label for="bateria">Informe o estado da bateria (s=1 / n=2)</label><br>
+            <input type="number" placeholder="bateria ok? 1 ou 2?" id="bateria">
+            <br>
+            <label for="permissao">Informe o estado das permissões (s=1 / n=2)</label><br>
+            <input type="number" placeholder="permissao ok? 1 ou 2?" id="permissao">
+            <br>
+            <label for="combustivel">Informe o estado do combustível(s=1 / n=2)</label><br>
+            <input type="number" placeholder="combustível 1 ou 2?" id="combustivel">
+            <br>
+            <label for="audio">Informe o estado do áudio (s=1 / n=2)</label><br>
+            <input type="number" placeholder="áudio ok? 1 ou 2??" id="audio">
+                <br><br>
+      
+        <button onclick="verificar()">Verificar</button>
+        </div>
+
+        <div class="terceiro-passo">
+            <h3>Resultado da verificação</h3>
+            <p id="resultado"></p>
+            <button onclick="go(3,2)">Refazer verificação</button>
+            <button onclick="go(3,1)">Encerrar</button>
+        </div>
+
+    </div>
+    
+</body>
+
+<script>
+    const primeiraDiv = document.querySelector('.primeiro-passo');
+    const segundaDiv = document.querySelector('.segundo-passo');
+    const terceiraDiv = document.querySelector('.terceiro-passo');
+
+    function go(currentStep,nextStep) //fonction chargée de basculer entre les DIV
+   //elle appliquera l’affichage NONE sur une DIV et appliquera l’affichage BLOCK sur une autre DIV
+    {
+        let dNone, dBlock;
+        if(currentStep == 1)
+        {
+            dNone = primeiraDiv;
+        }
+        else if(currentStep == 2)
+        {
+            dNone = segundaDiv;
+        }
+        else
+        {
+            dNone = terceiraDiv;
+        }
+
+        dNone.style.display = 'none';
+
+        if(nextStep == 1)
+        {
+            dBlock =             dNone = primeiraDiv;
+;
+        }
+        else if(nextStep == 2)
+        {
+            dBlock = segundaDiv;
+        }
+        else
+        {
+            dBlock = terceiraDiv;
+        }
+
+        dBlock.style.display = 'block';
+    }
+
+function verificar()
+//Fonctionne pour valider la saisie de données si l’un des champs est vide 
+//Função para validar a entrada de dados se um dos campos estiver vazio 
+{
+    const bateria = document.getElementById('bateria');
+    const permissao = document.getElementById('permissao');
+    const combustivel = document.getElementById('combustivel');
+    const audio = document.getElementById('audio');
+
+    bateria.style.border = 'none';
+    permissao.style.border = 'none';
+    combustivel.style.border = 'none';
+    audio.style.border = 'none';
+    
+  
+    if(!bateria.value || !permissao.value || combustivel.value || audio.value)
+    {
+        if (bateria.value == 1
+        && permissao.value == 1
+        && combustivel.value == 1 
+        && audio.value == 1)
+        {
+            console.log('CheckList realizado com sucesso, voo autorizado, boa viagem!');
+            resultado.style.color = 'green';
+            resultado.innerHTML = "CheckList realizado com sucesso, voo autorizado, boa viagem!"
+        }
+        else
+        {
+            console.log('CheckList incompleto, voo cancelado!');
+            resultado.style.color = 'red';
+            resultado.innerHTML = "CheckList incompleto, voo cancelado!"
+        }resultado
+            go(2,3);//Função responsável por mostrar a terceira div quando os valores são informados e clicamos em verificar
+            //fonction responsavel pour montrer la troisième div lorsque les valeurs sont saisies et nous cliquons sur verifier
+        }
+}
+
+</script>
+
+
